@@ -23,6 +23,6 @@ public class PlayerController : MonoBehaviour
         float dirX = joystick.Horizontal * speed;
         float dirZ = joystick.Vertical * speed;
 
-        rb.velocity = new Vector3(dirX, 0 , dirZ);
+        rb.velocity = new Vector3(dirX, 0, dirZ);
     }
 }
