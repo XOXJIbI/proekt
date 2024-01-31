@@ -283,11 +283,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 960
+      value: 650
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 645
+      value: 415
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_LocalScale.x
@@ -457,7 +457,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 8
   field of view: 60
   orthographic: 1
   orthographic size: 5
@@ -503,8 +503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9342d124bfeebe448a91fba5bf803e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dumping: 1.5
-  offset: {x: 2, y: 0, z: 1}
+  dumping: 0.5
+  offset: {x: 0.5, y: 0, z: 0.5}
   isLeft: 0
 --- !u!1 &761082876
 GameObject:

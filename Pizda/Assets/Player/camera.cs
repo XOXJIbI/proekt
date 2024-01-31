@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class camera : MonoBehaviour
 {
-    public float dumping = 1.5f;
-    public Vector3 offset = new Vector3(2f, 0, 1f);
+    public float dumping = 0.5f;
+    public Vector3 offset = new Vector3(0.5f, 0, 0.5f);
     public bool isLeft;
     private bool isDown;
     private Transform player;
