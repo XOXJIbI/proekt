@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class camera : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     public float dumping = 0.5f;
     public Vector3 offset = new Vector3(0.5f, 0, 0.5f);
@@ -38,7 +38,7 @@ public class camera : MonoBehaviour
                 transform.position = new Vector3(player.position.x - offset.x, transform.position.y, transform.position.z);
             }
         }
-        else 
+        else
         {
             if (playerIsDown)
             {
@@ -66,41 +66,47 @@ public class camera : MonoBehaviour
             if (currentZ > lastZ) isDown = false; else if (currentZ < lastZ) isDown = true;
             lastZ = currentZ;
 
-            Vector3 target;
-            if (isLeft)
-            {
-                if (isDown)
-                {
-                    target = new Vector3(player.position.x - offset.x, transform.position.y, player.position.z - offset.z);
-            }
-                else if (!isDown)
-                {
-                    target = new Vector3(player.position.x - offset.x, transform.position.y, player.position.z + offset.z);
-                }
-                else
-                {
-                    target = new Vector3(player.position.x - offset.x, transform.position.y, transform.position.z);
-                }
-            }
-            else 
-            {
-                if (isDown)
-                {
-                    target = new Vector3(player.position.x + offset.x, transform.position.y, player.position.z - offset.z);
-            }
-                else if (!isDown)
-                {
-                    target = new Vector3(player.position.x + offset.x, transform.position.y, player.position.z + offset.z);
-                }
-                else
-                {
-                    target = new Vector3(player.position.x + offset.x, transform.position.y, transform.position.z);
-                }
-            }
+            // ѕровер€ем, стоит ли персонаж на месте
+            bool isPlayerIdle = Mathf.Approximately(player.GetComponent<Rigidbody>().velocity.magnitude, 0f);
 
-            Vector3 currentPosition = Vector3.Lerp(transform.position, target, dumping * Time.deltaTime);
-            transform.position = currentPosition;
+            if (!isPlayerIdle)
+            {
+                // ≈сли персонаж не стоит на месте, обновл€ем положение камеры
+                Vector3 target;
+                if (isLeft)
+                {
+                    if (isDown)
+                    {
+                        target = new Vector3(player.position.x - offset.x, transform.position.y, player.position.z - offset.z);
+                    }
+                    else if (!isDown)
+                    {
+                        target = new Vector3(player.position.x - offset.x, transform.position.y, player.position.z + offset.z);
+                    }
+                    else
+                    {
+                        target = new Vector3(player.position.x - offset.x, transform.position.y, transform.position.z);
+                    }
+                }
+                else
+                {
+                    if (isDown)
+                    {
+                        target = new Vector3(player.position.x + offset.x, transform.position.y, player.position.z - offset.z);
+                    }
+                    else if (!isDown)
+                    {
+                        target = new Vector3(player.position.x + offset.x, transform.position.y, player.position.z + offset.z);
+                    }
+                    else
+                    {
+                        target = new Vector3(player.position.x + offset.x, transform.position.y, transform.position.z);
+                    }
+                }
+
+                Vector3 currentPosition = Vector3.Lerp(transform.position, target, dumping * Time.deltaTime);
+                transform.position = currentPosition;
+            }
         }
     }
-
 }
